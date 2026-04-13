@@ -99,9 +99,26 @@
                 </button>
             </div>
             <!-- Mobile Menu Icon -->
-            <button class="md:hidden text-primary">
-                <span class="material-symbols-outlined">menu</span>
+            <button id="mobile-menu-btn" class="md:hidden text-primary p-2">
+                <span id="mobile-menu-icon"
+                    class="material-symbols-outlined transition-transform duration-300">menu</span>
             </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu"
+            class="hidden md:hidden bg-surface-container-low shadow-ambient origin-top transition-all duration-300">
+            <div class="flex flex-col px-8 py-6 gap-6 text-center">
+                <a class="mobile-link text-on-surface-variant hover:text-primary font-sans text-lg transition-colors"
+                    href="#servicios">Servicios</a>
+                <a class="mobile-link text-on-surface-variant hover:text-primary font-sans text-lg transition-colors"
+                    href="#metodologia">Metodología</a>
+                <a class="mobile-link text-on-surface-variant hover:text-primary font-sans text-lg transition-colors"
+                    href="#contacto">Contacto</a>
+                <button
+                    class="bg-gradient-to-br from-primary to-primary-container text-on-primary px-8 py-3 rounded-xl text-md font-medium hover:opacity-90 transition-all active:scale-95 mx-auto w-full max-w-[200px]">
+                    Reservar Turno
+                </button>
+            </div>
         </div>
     </nav>
     <!-- Hero Section -->
@@ -126,8 +143,7 @@
             </div>
             <div class="flex-1 relative">
                 <div class="aspect-[4/5] rounded-xl overflow-hidden shadow-ambient relative">
-                    <img class="w-full h-full object-cover"
-                        data-alt="Atardecer cálido y relajante en el océano"
+                    <img class="w-full h-full object-cover" data-alt="Atardecer cálido y relajante en el océano"
                         src="./img/hero_ocean_warm.png" />
                 </div>
                 <!-- Asymmetric Floating Element -->
@@ -354,10 +370,8 @@
             <div class="space-y-6">
                 <h4 class="font-sans text-sm font-bold uppercase tracking-widest text-primary">Links</h4>
                 <div class="flex flex-col gap-4">
-                    <a class="text-stone-500 hover:text-primary transition-all font-sans text-sm"
-                        href="#">Instagram</a>
-                    <a class="text-stone-500 hover:text-primary transition-all font-sans text-sm"
-                        href="#">Facebook</a>
+                    <a class="text-stone-500 hover:text-primary transition-all font-sans text-sm" href="#">Instagram</a>
+                    <a class="text-stone-500 hover:text-primary transition-all font-sans text-sm" href="#">Facebook</a>
                     <a class="text-stone-500 hover:text-primary transition-all font-sans text-sm" href="#">Ubicación
                         (Mar del Plata)</a>
                 </div>
@@ -373,8 +387,7 @@
                 </div>
             </div>
         </div>
-        <div
-            class="max-w-7xl mx-auto mt-20 pt-8  flex flex-col md:flex-row justify-between items-center gap-4">
+        <div class="max-w-7xl mx-auto mt-20 pt-8  flex flex-col md:flex-row justify-between items-center gap-4">
             <p class="font-sans text-sm text-stone-400">© 2026 Lic. Virginia Carlini. Todos los derechos reservados.</p>
             <div class="flex gap-4">
                 <img class="h-8 opacity-20 grayscale"
@@ -383,6 +396,31 @@
             </div>
         </div>
     </footer>
+    <script>
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+        const icon = document.getElementById('mobile-menu-icon');
+        const links = document.querySelectorAll('.mobile-link');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+            if (menu.classList.contains('hidden')) {
+                icon.textContent = 'menu';
+                icon.classList.remove('rotate-90');
+            } else {
+                icon.textContent = 'close';
+                icon.classList.add('rotate-90');
+            }
+        });
+
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+                icon.textContent = 'menu';
+                icon.classList.remove('rotate-90');
+            });
+        });
+    </script>
 </body>
 
 </html>
